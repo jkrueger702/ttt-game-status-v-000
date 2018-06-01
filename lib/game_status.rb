@@ -1,9 +1,9 @@
 # Board with winning X in the top row.
 board = ["X", "X", "X", " ", " ", " ", " ", " ", " "]
- 
+
 # Definition of indexes that compose a top row win.
 top_row_win = [0,1,2]
- 
+
 # Check if each index in the top_row_win array contains an "X"
 if board[top_row_win[0]] == "X" && board[top_row_win[1]] == "X" && board[top_row_win[2]] == "X"
   puts "X won in the top row"
@@ -28,19 +28,19 @@ puts "Now for something different"
 puts
 #WIN_COMBINATIONS.each do |win|
 #  puts win == [1, 2, 3] || win == [0, 4, 8]
-#end 
+#end
 WIN_COMBINATIONS.each do |win|
   win
-end 
+end
 
 
 def won?(array)
   WIN_COMBINATIONS.each do |win|
     if win == array["X"]
       puts "Fuck Yeah"
-    end 
-  end 
-end 
+    end
+  end
+end
 won?(board)
 
 
@@ -53,9 +53,9 @@ won?(board)
 #      puts winning_combo
 #    else
 #      puts "fuck no"
-#    end 
-#  end 
-#end 
+#    end
+#  end
+#end
 
 
 
@@ -63,8 +63,8 @@ won?(board)
 #WIN_COMBINATIONS.each do |win|
 #  win.each do |unit|
 #  puts unit
-#  end 
-#end 
+#  end
+#end
 
 #def WON?(board)
 #  for each win_combination in WIN_COMBINATIONS
@@ -73,11 +73,11 @@ won?(board)
 #  win_index_1 = win_combination[0]
   #win_index_2 = win_combination[1]
   #win_index_3 = win_combination[2]
- 
+
 #  position_1 = board[win_index_1] # load the value of the board at win_index_1
   #position_2 = board[win_index_2] # load the value of the board at win_index_2
   #position_3 = board[win_index_3] # load the value of the board at win_index_3
- 
+
 #  if position_1 == "X" #&& position_2 == "X" && position_3 == "X"
 #    puts "fuck yeah!"
     #return win_combination # return the win_combination indexes that won.
