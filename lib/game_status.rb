@@ -12,7 +12,7 @@ WIN_COMBINATIONS = [
 ]
 
 def won?(board)
-	
+
 end
 
 
@@ -26,7 +26,7 @@ end
 def full?(board)
 	full = board.all? do
 		|i| i == "X" || i=="O"
-	end 
+	end
 end
 
 def draw?(board)
@@ -34,4 +34,3 @@ def draw?(board)
 end
 
 all_empty?(board)
-
