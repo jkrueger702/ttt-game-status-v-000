@@ -1,58 +1,62 @@
-board = ["O", "O", "X",
-         "X", "X", "O",
-         "O", "X", "X"]
+def position_taken?(board, index)
+  !(board[index].nil? || board[index] == " ")
+end
 
 WIN_COMBINATIONS = [
-[0,1,2],
-[3,4,5],
-[6,7,8],
-[0,3,6],
-[1,4,7],
-[2,5,8],
-[0,4,8],
-[2,4,6]
+  [0,1,2], #Top row
+  [3,4,5], #Middle row
+  [6,7,8], #Bottom row
+  [0,3,6], #Left column
+  [1,4,7], #Middle column
+  [2,5,8], #Right column
+  [0,4,8], #Left start diagonal
+  [2,4,6]  #Right start diagonal
 ]
 
-def position_taken?(board, index)
- !(board[index] == " " || board[index] == "" || board[index] == nil)
-end
+board = ["X", "X", "X", "O", " ", "O", "O", " ", " "]
+camel = [8, " ", " ", " ", 8, " ", " ", " ", 8]
 
-def won?(array)
-  WIN_COMBINATIONS.each do |winner_set|
-    if array[winner_set[0]] == array[winner_set[1]] &&
-       array[winner_set[1]] == array[winner_set[2]] &&
-       position_taken?(array, winner_set[0])
-       puts "somebody won!"
-       return true
-       return winner_set
+#board.select {|i| board[i] == "X"}
+
+#board_indices = board.length.times.select {|i| board[i] == "X" || board[i] == "O"}
+#board_indices
+#board_guy = board.each_index.select {|i| board[i] == "X" || board[i] == "O"}
+#board_guy
+=begin
+position_1 = board[0..2]
+if position_taken?(board, 0..2)
+  puts "Hello World"
+end
+=end
+
+def won?(board)
+winner = []
+empty_board = board.all? {|x| x == " "}
+WIN_COMBINATIONS.each do |sub_array|
+    if empty_board || full?(board)
+      return false
+    elsif sub_array.all? { |value| board[value] =="X" } || sub_array.all? { |value| board[value] =="O" }
+      winner = sub_array
     end
   end
+  winner
 end
 
-puts won?(board)
-
-def full?(array)
- if !(array.any?{|i| i == " "})
-   puts "the board is full!"
-   return true
- else
-   puts "the board is not yet full"
-   return false
- end
+def full?(board)
+  !board.any? { |x| x == " " }
 end
 
-puts full?(board)
-puts
-puts
-puts
-def draw?(array2)
-  if full?(array2) && !(won?(array2))
-    puts "oh no it looks like a draw!"
+def draw?(board)
+  if !won?(board) && full?(board)
     return true
-  else
-    puts "it's not a draw afterall"
+  elsif !won?(board) && !full?(board) || !won?(board)
     return false
   end
 end
 
-puts draw?(board)
+draw?(board)
+
+
+
+
+
