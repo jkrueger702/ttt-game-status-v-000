@@ -1,57 +1,87 @@
-def position_taken?(board, index)
-  !(board[index].nil? || board[index] == " ")
+# Board with winning X in the top row.
+board = ["X", "X", "X", " ", " ", " ", " ", " ", " "]
+ 
+# Definition of indexes that compose a top row win.
+top_row_win = [0,1,2]
+ 
+# Check if each index in the top_row_win array contains an "X"
+if board[top_row_win[0]] == "X" && board[top_row_win[1]] == "X" && board[top_row_win[2]] == "X"
+  puts "X won in the top row"
 end
 
 WIN_COMBINATIONS = [
-  [0,1,2], #Top row
-  [3,4,5], #Middle row
-  [6,7,8], #Bottom row
-  [0,3,6], #Left column
-  [1,4,7], #Middle column
-  [2,5,8], #Right column
-  [0,4,8], #Left start diagonal
-  [2,4,6]  #Right start diagonal
+[0,1,2],
+[3,4,5],
+[6,7,8],
+[0,3,6],
+[1,4,7],
+[2,5,8],
+[0,4,8],
+[2,4,6]
 ]
+puts
+puts "New Section"
+puts
+puts WIN_COMBINATIONS[0] == [0, 1, 2]
+puts WIN_COMBINATIONS[5][2]
+puts "Now for something different"
+puts
+#WIN_COMBINATIONS.each do |win|
+#  puts win == [1, 2, 3] || win == [0, 4, 8]
+#end 
+WIN_COMBINATIONS.each do |win|
+  win
+end 
 
-board = ["X", "X", "X", "O", " ", "O", "O", " ", " "]
-camel = [8, " ", " ", " ", 8, " ", " ", " ", 8]
 
-#board.select {|i| board[i] == "X"}
+def won?(array)
+  WIN_COMBINATIONS.each do |win|
+    if win == array["X"]
+      puts "Fuck Yeah"
+    end 
+  end 
+end 
+won?(board)
 
-#board_indices = board.length.times.select {|i| board[i] == "X" || board[i] == "O"}
-#board_indices
-#board_guy = board.each_index.select {|i| board[i] == "X" || board[i] == "O"}
-#board_guy
-=begin
-position_1 = board[0..2]
-if position_taken?(board, 0..2)
-  puts "Hello World"
-end
-=end
 
-def won?(board)
-winner = []
-empty_board = board.all? {|x| x == " "}
-WIN_COMBINATIONS.each do |sub_array|
-    if empty_board || full?(board)
-      return false
-    elsif sub_array.all? { |value| board[value] =="X" } || sub_array.all? { |value| board[value] =="O" }
-      winner = sub_array
-    end
-  end
-  winner
-end
+#def win?
+#  winning_combo = true
+#  WIN_COMBINATIONS.each do |win|
+#    if win = [353735890]
+#      winning_combo = false
+#      puts "fuck yeah"
+#      puts winning_combo
+#    else
+#      puts "fuck no"
+#    end 
+#  end 
+#end 
 
-def full?(board)
-  !board.any? { |x| x == " " }
-end
 
-def draw?(board)
-  if !won?(board) && full?(board)
-    return true
-  elsif !won?(board) && !full?(board) || !won?(board)
-    return false
-  end
-end
 
-draw?(board)
+
+#WIN_COMBINATIONS.each do |win|
+#  win.each do |unit|
+#  puts unit
+#  end 
+#end 
+
+#def WON?(board)
+#  for each win_combination in WIN_COMBINATIONS
+  # win_combination is a 3 element array of indexes that compose a win, [0,1,2]
+  # grab each index from the win_combination that composes a win.
+#  win_index_1 = win_combination[0]
+  #win_index_2 = win_combination[1]
+  #win_index_3 = win_combination[2]
+ 
+#  position_1 = board[win_index_1] # load the value of the board at win_index_1
+  #position_2 = board[win_index_2] # load the value of the board at win_index_2
+  #position_3 = board[win_index_3] # load the value of the board at win_index_3
+ 
+#  if position_1 == "X" #&& position_2 == "X" && position_3 == "X"
+#    puts "fuck yeah!"
+    #return win_combination # return the win_combination indexes that won.
+#  else
+#    false
+#  end
+#end
